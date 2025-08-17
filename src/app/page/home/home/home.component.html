@@ -1,0 +1,372 @@
+<div class="relative w-full">
+  <div class="header flex-row">
+    <div class="relative min-h-[90px] w-full header-top">
+      <div class="absolute">
+        <video autoplay loop muted >
+          <source [src]="srcVideoHeader" type="video/mp4" >
+        </video>
+      </div>
+      <div class="flex justify-center">
+        <div class="w-[75%] relative flex h-full">
+          <div class="p-2 flex-2">
+            <img class="w-[229px] h-[75px]" src="./assets/images/logos/logo.png">
+          </div>
+          <div class="p-2 flex-3 text-[#4c9bb6] font-bold text-[16px] flex items-center h-[90px]">
+            <div>
+              THẾ GIỚI CASINO TRONG TAY BẠN
+            </div>
+          </div>
+          <div class="flex-7 w-full flex items-center justify-end">
+            <div class="flex">
+              <button pButton pRipple type="button" (click)="login.showDialog()" label="ĐĂNG NHẬP" class="p-button-rounded button-header bg-button-header"></button>
+              <button pButton pRipple type="button" label="ĐĂNG KÝ" class="p-button-rounded button-header bg-button-header mx-2"></button>
+              <button pButton pRipple type="button" label="CHƠI THỬ" class="p-button-rounded button-header bg-button-header mr-2"></button>
+            </div>
+            <div class="flex">
+              <div class="btn-language"></div>
+              <div class="btn-help"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar min-h-[44px]">
+    <ul class="flex justify-center h-[44px]">
+      <li *ngFor="let menu of listMenu, let i = index" class="relative w-fit h-full px-2 flex items-center hover:bg-[#ff955e] group text-white">
+        <a href="#" class="flex items-center">
+          <i class="icon-menu-header" [ngStyle]="{ 'background-image': 'url(' + menu.icon + ')' }"></i>
+          {{menu.name}}
+        </a>
+        <div *ngIf="menu.children.length > 0" class="absolute hidden group-hover:block top-[100%] left-1/2 transform -translate-x-1/2 w-auto z-999">
+          <ol class="min-w-full border-[1px] border-[#32b4e3]">
+            <li *ngFor="let child of menu.children, let i = index"
+                class="w-full leading-[30px] text-[12px] px-[15px] border-[#32b4e3] flex justify-start bg-[#010d23] text-white hover:bg-[#2d7699] cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis"
+            >
+              {{child.name}}
+            </li>
+          </ol>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="h-[34px] bg-[#000] flex justify-center">
+    <div class="w-[75%] flex items-center text-white relative">
+      <img src="assets/images/logos/loa.png" alt="Tin tuc">
+      <div class="overflow-hidden whitespace-nowrap relative w-full">
+        <div class="marquee relative left-0 top-0 flex space-x-8" #marquee>
+          <span class="inline-block py-2 hover:underline"
+                *ngFor="let item of items"
+                (mouseover)="stopMarquee()"
+                (mouseout)="startMarquee()">
+            {{ item }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--slide-->
+  <div>
+    <div>
+      <p-carousel [value]="carousels" styleClass="custom-carousel"
+                  [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="2000" [responsiveOptions]="responsiveOptions"
+                  [showNavigators]="false"
+      >
+        <ng-template let-product pTemplate="item">
+          <p-image [src]="product" alt="Image"></p-image>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+
+  <!--  body-->
+  <div class="w-full flex flex-col justify-center">
+    <div class="w-full flex justify-center">
+      <div class="w-[75%]">
+        <!--  tinh nang vuot troi-->
+        <div class="">
+          <div class="header-part">
+            <h4 class="">NHỮNG TÍNH NĂNG VƯỢT TRỘI CỦA SHBET</h4>
+          </div>
+          <ul class="flex m-0 p-0">
+            <li
+              *ngFor="let outstanding of outstandings; let i = index; let last = last"
+              [ngClass]="{ 'border-r-[0px]': last, 'border-r-[1px] border-[#357e9f]': !last }"
+              class="outstanding-child w-1/4 py-[10px] px-[25px] text-[14px] text-[#000] flex items-center justify-between"
+            >
+              <div class="">
+                <img class="img-outstanding" [src]="outstanding.srcImage" alt="">
+              </div>
+              <div class="pl-4 flex-1">
+                <p class="font-bold">
+                  {{outstanding.title}}
+                </p>
+                <p>
+                  {{outstanding.description}}
+                </p>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- ĐẠI SỨ THƯƠNG HIỆU ANDRÉS INIESTA-->
+        <div class="my-[30px]">
+          <div class="header-part">
+            <h4 class="">ĐẠI SỨ THƯƠNG HIỆU ANDRÉS INIESTA</h4>
+          </div>
+          <div class="w-full flex justify-between h-[105%]">
+            <div class="w-[63%]">
+              <iframe
+                title='dai su thuong hieu'
+                class="h-[100%] w-full rounded-[35px]"
+                allow="autoplay"
+                allowfullscreen="allowfullscreen"
+                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FAndresIniesta%2Fvideos%2F688592966738711%2F%3Fref%3Dembed_video&show_text=0&width=560"
+              >
+              </iframe>
+            </div>
+            <div class="w-[36%]">
+              <div class="flex justify-end">
+                <img src="/assets/images/brandAmbassador/brandAmbassador1.png" alt="">
+              </div>
+              <div class="mt-4">
+                <p-carousel [value]="carouselsBrand" styleClass="custom-carousel"
+                            [numVisible]="2" [numScroll]="1" [circular]="true" [autoplayInterval]="2000" [responsiveOptions]="responsiveOptions"
+                            [showNavigators]="false" [showIndicators]="false"
+                >
+                  <ng-template let-brand pTemplate="item">
+                    <img alt="" [src]="brand">
+                  </ng-template>
+                </p-carousel>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- san pham-->
+        <div class="mt-5">
+          <div class="header-part">
+            <h4 class="">SẢN PHẨM</h4>
+          </div>
+          <div>
+            <ul class="flex m-0 p-0 justify-center items-center gap-2">
+              <li *ngFor="let product of products; let i = index; let last = last"
+                class="product-li block relative h-[358px] w-[157px] p-2"
+                  [ngClass]="{'active': activeProduct === i}"
+                  (mouseenter)="activeProduct = i"
+              >
+                <div class="">
+                  <div class="flex items-center">
+                    <h2 class="title-product w-fit text-[20px]">{{product.title}}</h2>
+                    <img *ngIf="activeProduct !== i" class="w-[22px] h-[22px] ml-2" src="assets/icons/icon-next.png" alt="">
+                  </div>
+                  <div class="flex-row" *ngIf="activeProduct === i">
+                    <span class="sub-title-product" *ngIf="activeProduct === i">
+                      SẢNH HOT
+                    </span>
+                    <div class="mt-2 flex flex-col">
+                      <button class="button-product mt-1" *ngFor="let child of product.childrens">
+                        {{child}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="" [ngClass]="{'container-img-product-active': activeProduct === i}">
+                  <img class="img-product w-full h-full mt-[58px]" alt="" [ngClass]="{'img-product-active': activeProduct === i}" [src]="product.srcImage">
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!--      tro choi yeu thich-->
+        <div>
+          <div class="header-part">
+            <h4 class="">TRÒ CHƠI YÊU THÍCH</h4>
+          </div>
+          <div>
+            <ul class="gap-2 flex justify-center">
+              <li [ngClass]="{'game-li-active': gameFavoriteActive == index}" (click)="getGameFavorite(index)"
+                  class="w-fit px-5 border-[2px] rounded-[16px] game-li" *ngFor="let favoriteGame of gameFavorites; let index = index">
+                {{favoriteGame.title}}
+              </li>
+            </ul>
+
+            <ul class="mt-8 flex flex-wrap justify-center">
+              <li class="w-1/6 mb-2" *ngFor="let game of games; let index = index">
+                <div class="p-8">
+                  <img class="w-full" [src]="game.srcImage" alt="">
+                  <button class="w-full text-center mt-2 button-game">
+                    {{game.title}}
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--      TẢI APP-->
+    <div class="w-full flex justify-center download-app">
+      <div class="w-[75%]">
+        <div class="header-part">
+          <h4 class="">TẢI APP</h4>
+        </div>
+        <div class="flex">
+          <div class="w-2/5 flex flex-col">
+            <div class="flex w-full">
+              <div class="w-[25%]">
+                <img class="min-w-[100px] h-[100px]" src="assets/images/downloadApp/logo.png" alt="">
+              </div>
+              <div class="w-[75%] text-[#337c9d] download-app-title">
+                <h2 class="text-6xl font-black">
+                  TẢI APP SHBET
+                </h2>
+                <p class="font-normal text-[30px]">
+                  Để có trải nghiệm tốt nhất
+                </p>
+              </div>
+            </div>
+            <div class="w-full flex flex-row justify-center mt-20">
+              <div class="w-2/5 flex flex-col justify-center">
+                <div class="flex justify-center">
+                  <img class="w-[137px] h-[137px]" src="assets/images/downloadApp/iphone.png" alt="">
+                </div>
+                <img src="assets/images/downloadApp/appstore.png" alt="">
+              </div>
+              <div class="w-2/5 flex flex-col justify-center">
+                <div class="flex justify-center">
+                  <img class="w-[137px] h-[137px]" src="assets/images/downloadApp/android.png" alt="">
+                </div>
+                <img src="assets/images/downloadApp/ggPlay.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="w-1/5">
+            <img src="assets/images/downloadApp/phone.png" alt="">
+          </div>
+          <div class="w-2/5">
+            <img src="assets/images/downloadApp/human.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex justify-center">
+      <div class="w-[75%]">
+        <!-- HƯỚNG DẪN-->
+        <div>
+          <div class="header-part">
+            <h4 class="">HƯỚNG DẪN</h4>
+          </div>
+          <div>
+            <ul>
+              <li class="w-1/5 instruction px-[10px]" *ngFor="let instruction of instructions; let first = first;">
+                <div class="flex justify-center items-end h-full" [ngStyle]="{ 'background-image': 'url(' + instruction + ')' }">
+                  <span class="detail-instruction w-full">XEM CHI TIẾT</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <section class="section-header w-full mt-16"></section>
+      </div>
+    </div>
+  </div>
+    <!--      footer-->
+    <div class="w-full flex justify-center class-footer">
+      <div class="w-[75%]">
+        <div class="flex">
+          <div class="w-1/2 flex items-center">
+            <div class="w-1/2 max-w-[334px] max-h-[189px]">
+              <img src="assets/images/logos/logo_footer.png" alt="">
+            </div>
+            <div class="w-1/2 pl-[20px]">
+              <h2 class="text-[#4c9bb6] text-[37px] font-bold">
+                THẾ GIỚI CASINO TRONG TAY BẠN
+              </h2>
+            </div>
+          </div>
+          <div class="w-1/2 pl-10">
+            <div class="relative">
+              <p [class.collapsed]="isCollapsed" class="line-clamp-3 text-[24px] text-[#4c9bb6]">
+                <b>SHBET</b>
+                {{ fullText }}
+              </p>
+              <button (click)="toggleText()" class="hover:text-[#23527c] hover:underline focus:outline-none mt-2 font-bold text-[24px] text-[#4c9bb6]">
+                {{ isCollapsed ? '...Xem Thêm' : 'Thu gọn' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex">
+          <div class="w-1/2 flex">
+            <div class="w-1/2 text-[#1f607d]">
+              <h3 class="font-bold text-[33px]">Đại Sứ Thương Hiệu</h3>
+              <h4 class="text-[30px]">Iniesta</h4>
+            </div>
+            <div class="w-1/2 flex justify-end">
+              <div class="w-[65%]">
+                <img src="assets/images/logos/signFooter.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 flex justify-end">
+            <div class="w-[85%] flex">
+              <div class="w-1/2">
+                <h5 class="mb-[15px] text-[#2d7699] text-2xl font-normal">GIẤY PHÉP KINH DOANH</h5>
+                <div class="">
+                  <img class="business-license" src="assets/images/logos/businessLicense.png" alt="">
+                </div>
+              </div>
+              <div class="w-1/2">
+                <h5 class="mb-[15px] text-[#2d7699] text-2xl font-normal">PHƯƠNG THỨC THANH TOÁN</h5>
+                <div class="grid grid-cols-4 gap-[36px]">
+                  <img *ngFor="let payment of paymentMethods" class="payment-method" [src]="payment" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex mt-10">
+          <div class="w-1/2 flex">
+            <div class="w-1/2 text-[#1f607d]">
+              <h3 class="font-bold text-[33px]">Đối Tác Chính Thức</h3>
+              <h4 class="text-[30px]">Villarreal CF & OKVIP</h4>
+            </div>
+            <div class="w-1/2 flex justify-end">
+              <div class="w-full">
+                <img src="assets/images/logos/logoPartner.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 flex justify-end">
+            <div class="w-4/5 flex">
+              <div class="w-1/2">
+                <div class="w-fit">
+                  <h5 class="mb-[15px] text-[#2d7699] text-2xl font-normal w-fit">THEO DÕI CHÚNG TÔI</h5>
+                  <div class="flex justify-between items-center w-full max-w-full">
+                    <img *ngFor="let social of socials" class="social" [src]="social" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="w-1/2">
+                <h5 class="mb-[15px] text-[#2d7699] text-2xl font-normal">CHƠI CÓ TRÁCH NGHIỆM</h5>
+                <img class="play-responsibly" src="assets/images/footer/playResponsibly/playResponsibly.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center footer-copyright">
+          Copyright © SHBET.COM , sh bet, shbet88, nhà cái shbet, đăng ký shbet, đăng nhập shbet, nổ hũ shbet, shbet com, shbet0 là nơi lý tưởng cho người chơi tham gia giải trí, sản phẩm trò chơi hấp dẫn hãy nhanh tay tham gia để được trải nghiệm dịch vụ tốt nhất.
+        </div>
+      </div>
+    </div>
+    <!-- end footer-->
+</div>
+
+<app-login></app-login>
